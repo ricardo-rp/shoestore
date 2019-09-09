@@ -22,7 +22,7 @@ export default createGlobalStyle`
 
   #root {
     max-width: 1020px;
-    marin: 0 auto;
+    margin: 0 auto;
     padding: 0 20px 50px;
   }
 
