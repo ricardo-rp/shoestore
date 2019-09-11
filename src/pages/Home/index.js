@@ -13,7 +13,7 @@ export default class Home extends Component {
   async componentDidMount() {
     const response = await api.get("products");
 
-    // Vamos evitar chamar o formatPrice() no render(), para ele nao rodar toda vez que algo mudar na pagina.
+    // Nao vamos chamar formatPrice() no render(), para ele nao rodar toda vez que renderizar o componente.
     const data = response.data.map(product => ({
       ...product,
       priceFormatted: formatPrice(product.price)
