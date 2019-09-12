@@ -9,8 +9,6 @@ import {
 
 import { Container, ProductTable, Total } from "./styles";
 
-//#TODO: Remover bordas do botao delete e setas do input
-
 function Cart({ cart }) {
   return (
     <Container>
@@ -59,7 +57,9 @@ function Cart({ cart }) {
       </ProductTable>
 
       <footer>
-        <button type="button"> Finalizar pedido</button>
+        <button type="button">
+          <span>Finalizar pedido</span>
+        </button>
         <Total>
           <span>TOTAL</span>
           <strong>R$678,90</strong>

@@ -15,7 +15,7 @@ function Header({ cartSize }) {
         <img src={logo} alt="blacksheepshoes" />
       </Link>
       <div>
-        <User to="/login">
+        <User to="/signup">
           <div>
             <strong>Username?</strong>
             <span>login/logout</span>
