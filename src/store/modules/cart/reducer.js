@@ -10,9 +10,9 @@ export default function cart(state = [], action) {
 
         // Se o produto existe no array
         if (productIndex >= 0) {
-          draft[productIndex].ammount++;
+          draft[productIndex].amount++;
         } else {
-          draft.push({ ...action.product, ammount: 1 });
+          draft.push({ ...action.product, amount: 1 });
         }
       });
 
