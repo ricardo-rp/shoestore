@@ -1,12 +1,14 @@
 import React, { Component } from "react";
+
+import * as CartActions from "../../store/modules/cart/actions";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 import { MdAddShoppingCart } from "react-icons/md";
+import { ProductList } from "./styles";
 
 import { formatPrice } from "../../util/format";
 import api from "../../services/api";
-
-import { ProductList } from "./styles";
 
 class Home extends Component {
   state = {
@@ -16,7 +18,8 @@ class Home extends Component {
   async componentDidMount() {
     const response = await api.get("products");
 
-    // Nao vamos chamar formatPrice() no render(), para ele nao rodar toda vez que renderizar o componente.
+    // Nao chamamos formatPrice() no render(), para nao roda-lo sempre que renderizar o componente.
+    // Da para fazer, pois o preco do item nao mudara ao vivo
     const data = response.data.map(product => ({
       ...product,
       priceFormatted: formatPrice(product.price)
@@ -26,12 +29,9 @@ class Home extends Component {
   }
 
   handleAddProduct = product => {
-    const { dispatch } = this.props;
+    const { addToCart } = this.props;
 
-    dispatch({
-      type: "ADD_TO_CART",
-      product
-    });
+    addToCart(product);
   };
 
   render() {
@@ -60,4 +60,12 @@ class Home extends Component {
     );
   }
 }
-export default connect()(Home);
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(CartActions, dispatch);
+
+// Esse null seria o mapStateToProps()
+export default connect(
+  null,
+  mapDispatchToProps
+)(Home);
