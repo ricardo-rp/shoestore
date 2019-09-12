@@ -4,19 +4,37 @@ import produce from "immer";
 export default function cart(state = [], action) {
   // Quando chamamos dispatch(), todos os reducers sao chamados. Por isso usamos switch case
   switch (action.type) {
-    case "ADD_TO_CART":
+    case "@cart/ADD":
       return produce(state, draft => {
-        const productIndex = draft.findIndex(
-          product => product.id === action.product.id
-        );
+        const productIndex = draft.findIndex(p => p.id === action.product.id);
 
-        // Se o produto existe
+        // Se o produto existe no array
         if (productIndex >= 0) {
-          draft[productIndex].ammount++;
+          draft[productIndex].amount++;
         } else {
-          draft.push({ ...action.product, ammount: 1 });
+          draft.push({ ...action.product, amount: 1 });
         }
       });
+
+    case "@cart/REMOVE":
+      return produce(state, draft => {
+        const productIndex = draft.findIndex(p => p.id === action.id);
+
+        if (productIndex >= 0) draft.splice(productIndex, 1);
+      });
+
+    case "@cart/UPDATE_AMOUNT": {
+      if (action.amount <= 0) return state;
+
+      return produce(state, draft => {
+        const productIndex = draft.findIndex(p => p.id === action.id);
+
+        if (productIndex >= 0) {
+          draft[productIndex].amount = Number(action.amount);
+        }
+      });
+    }
+
     default:
       return state;
   }
