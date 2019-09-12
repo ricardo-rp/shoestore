@@ -11,7 +11,7 @@ import { Container, ProductTable, Total } from "./styles";
 
 //#TODO: Remover bordas do botao delete e setas do input
 
-function Cart({ cart }) {
+function Cart({ cart, dispatch }) {
   return (
     <Container>
       <ProductTable>
@@ -49,7 +49,12 @@ function Cart({ cart }) {
                 <strong>R$246,9</strong>
               </td>
               <td>
-                <button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    dispatch({ type: "REMOVE_FROM_CART", id: product.id })
+                  }
+                >
                   <MdDelete size={20} color="#7159c1" />
                 </button>
               </td>
