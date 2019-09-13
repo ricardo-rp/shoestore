@@ -36,6 +36,8 @@ class Home extends Component {
 
   render() {
     const { products } = this.state;
+    const { amount } = this.props;
+
     return (
       <ProductList>
         {products.map(product => (
@@ -51,6 +53,7 @@ class Home extends Component {
             >
               <div>
                 <MdAddShoppingCart size={16} color="#FFF" />
+                {amount[product.id] || 0}
               </div>
               <span>ADICIONAR AO CARRINHO</span>
             </button>
@@ -61,11 +64,19 @@ class Home extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  amount: state.cart.reduce((amount, product) => {
+    amount[product.id] = product.amount;
+
+    return amount;
+  }, {})
+});
+
 const mapDispatchToProps = dispatch =>
   bindActionCreators(CartActions, dispatch);
 
 // Esse null seria o mapStateToProps()
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Home);
