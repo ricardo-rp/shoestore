@@ -10,6 +10,10 @@ export const Container = styled.header`
   padding: 20px;
   border-radius: 40px;
 
+  img {
+    margin-left: 10px;
+  }
+
   div {
     display: flex;
   }
@@ -20,7 +24,7 @@ export const User = styled(Link)`
   align-items: center;
   text-decoration: none;
   transition: opacity 0.2s;
-  
+  margin-right: 20px;
 
   &:hover {
     opacity: 0.7;
@@ -48,7 +52,7 @@ export const Cart = styled(Link)`
   align-items: center;
   text-decoration: none;
   transition: opacity 0.2s;
-  
+  margin-right: 10px;
 
   &:hover {
     opacity: 0.7;

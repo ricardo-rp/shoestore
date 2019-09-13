@@ -21,7 +21,7 @@ justify-content: center;
     }
     
     span {
-     font-size: 16px;
+     font-size: 12px;
      line-height: 20px;
      color: #333;
      margin-top: 10px;
@@ -35,7 +35,7 @@ justify-content: center;
     }
 
     button {
-      margin-top: 10px;
+      margin-top: 30px;
       background: #7159c1;
       color: #fff;
       border: 0;
