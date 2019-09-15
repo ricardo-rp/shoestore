@@ -35,7 +35,7 @@ justify-content: center;
     }
 
     button {
-      margin-top: 30px;
+      margin-top: 25px;
       background: #7159c1;
       color: #fff;
       border: 0;

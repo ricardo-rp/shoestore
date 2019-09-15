@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import { Container } from "./styles";
 
@@ -12,7 +13,10 @@ export default class Login extends Component {
           <input type="text"></input>
           <span>Senha</span>
           <input type="password"></input>
-          <button>Finalizar cadastro</button>
+          <button>Log-in</button>
+          <Link to="/signup">
+            <span>Não possui conta?</span>
+          </Link>
         </form>
       </Container>
     );
