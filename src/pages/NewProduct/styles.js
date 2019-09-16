@@ -4,8 +4,10 @@ import { darken } from "polished";
 
 export const ImageContainer = styled.div`
   display: flex;
-  padding: 100px;
   margin-right: 20px;
+  align-items: center;
+  justify-contents: center;
+  padding-top: 80px;
 
   height: 260px;
   width: 260px;
@@ -13,6 +15,10 @@ export const ImageContainer = styled.div`
   border: 1px solid #ddd;
   border-radius: 5px;
   color: #666;
+
+  input {
+    width: 190px;
+  }
 `;
 
 export const Container = styled.div`
