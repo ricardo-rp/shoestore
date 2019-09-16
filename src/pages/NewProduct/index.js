@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 import { Container, ImageContainer } from "./styles";
-import { MdImage } from "react-icons/md";
 
 export default class Announce extends Component {
   state = {

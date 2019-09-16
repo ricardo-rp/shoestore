@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import axios from "axios";
-
 import { Container } from "./styles";
 import api from "../../services/api";
 
@@ -24,8 +22,6 @@ export default class SignUp extends Component {
   };
 
   render() {
-    const { email, password } = this.state;
-
     return (
       <Container>
         <div>

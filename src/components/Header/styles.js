@@ -19,6 +19,34 @@ export const Container = styled.header`
   }
 `;
 
+export const Sell = styled(Link)`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  margin-right: 20px;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  div {
+    text-align: right;
+    margin-right: 10px;
+    flex-direction: column;
+
+    strong {
+      display: block;
+      color: #fff;
+    }
+
+    span {
+      font-size: 12px;
+      color #999;
+    }
+  }
+`;
+
 export const User = styled(Link)`
   display: flex;
   align-items: center;
