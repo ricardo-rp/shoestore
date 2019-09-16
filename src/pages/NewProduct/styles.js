@@ -2,82 +2,53 @@ import styled from "styled-components";
 
 import { darken } from "polished";
 
-export const ImageContainer = styled.div`
-  display: flex;
-  margin-right: 20px;
-  align-items: center;
-  justify-contents: center;
-  padding-top: 80px;
-
-  height: 260px;
-  width: 260px;
-
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  color: #666;
-
-  input {
-    width: 190px;
-  }
-`;
-
 export const Container = styled.div`
-  justify-content: center;
   display: flex;
+  justify-content: center;
 
-  form {
-    flex-direction: column;
-    border-radius: 10px;
+  div {
     background: #fff;
     display: flex;
+    flex-direction: column;
+    border-radius: 10px;
     padding: 30px;
+    align-items: left;
 
     strong {
-      font-weight: bold;
       font-size: 21px;
+      font-weight: bold;
       align: center;
     }
 
-    div {
+    span {
+      font-weight: bold;
+      line-height: 24px;
+      color: #333;
       margin-top: 10px;
-      display: flex;
+    }
 
-      div {
-        flex-direction: column;
-        display: flex;
-        justify-content: flex-start;
+    input {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      height: 22px;
+      color: #666;
+    }
 
-        span {
-          font-weight: bold;
-          line-height: 24px;
-          color: #333;
-        }
-
-        input {
-          border: 1px solid #ddd;
-          border-radius: 5px;
-          height: 22px;
-          color: #666;
-        }
-
-        textarea {
-          border: 1px solid #ddd;
-          border-radius: 5px;
-          overflow: auto;
-          height: 190px;
-          resize: none;
-          color: #666;
-          rows: 12;
-          width: 260px;
-        }
-      }
+    textarea {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow: auto;
+      height: 100px;
+      resize: none;
+      color: #666;
+      width: 260px;
     }
 
     button {
       background: #7159c1;
       border-radius: 5px;
       font-weight: bold;
-      margin-top: 25px;
+      margin-top: 20px;
       padding: 10px;
       color: #fff;
       border: 0;

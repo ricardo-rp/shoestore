@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 
-import { Container, ImageContainer } from "./styles";
+import { Container } from "./styles";
 
+import api from "../../services/api";
 export default class Announce extends Component {
+  // O proprio backend deve verificar qual usuario publicou o anuncio via token
   state = {
     title: "",
     desc: "",
-    file: null
+    file: "",
+    price: 0
   };
 
   handleInputChange = event => {
@@ -16,33 +19,47 @@ export default class Announce extends Component {
     });
   };
 
-  handleFileSelect = event => {
-    this.setState({
-      ...this.state,
-      file: event.target.files[0]
-    });
+  handleButtonPress = event => {
+    api.post("/products", this.state);
   };
 
   render() {
+    const { title, desc, file, price } = this.state;
     return (
       <Container>
-        <form>
+        <div>
           <strong>Publicar Anuncio</strong>
-          <div>
-            <ImageContainer>
-              <img src={this.state.file} alt="produto" />
-              {/* <MdImage size={60} color="#333" /> */}
-              <input name="file" type="file" onChange={this.handleFileSelect} />
-            </ImageContainer>
-            <div>
-              <span>Titulo:</span>
-              <input name="title" type="text" />
-              <span>Descricao:</span>
-              <textarea name="desc" type="text" maxlength={210} />
-            </div>
-          </div>
+          <span>Titulo:</span>
+          <input
+            name="title"
+            value={title}
+            type="text"
+            onChange={this.handleInputChange}
+          />
+          <span>Descricao:</span>
+          <textarea
+            name="desc"
+            value={desc}
+            type="text"
+            maxlength={210}
+            onChange={this.handleInputChange}
+          />
+          <span>Url da imagem:</span>
+          <input
+            name="file"
+            value={file}
+            type="text"
+            onChange={this.handleInputChange}
+          />
+          <span>Preco:</span>
+          <input
+            name="price"
+            value={price}
+            type="number"
+            onChange={this.handleInputChange}
+          />
           <button type="button">Publicar</button>
-        </form>
+        </div>
       </Container>
     );
   }

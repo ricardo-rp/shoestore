@@ -32,8 +32,8 @@ export const Sell = styled(Link)`
 
   div {
     text-align: right;
-    margin-right: 10px;
     flex-direction: column;
+    margin-right: 5px;
 
     strong {
       display: block;
@@ -60,7 +60,7 @@ export const User = styled(Link)`
 
   div {
     text-align: right;
-    margin-right: 10px;
+    margin-right: 5px;
     flex-direction: column;
 
     strong {

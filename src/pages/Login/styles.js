@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { darken } from "polished";
 
 export const Container = styled.div`
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 
   div {
     background: #fff;

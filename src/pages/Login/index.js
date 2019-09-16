@@ -7,19 +7,10 @@ import { Container } from "./styles";
 
 export default class Login extends Component {
   state = {
-    username: "",
+    email: "",
     password: ""
   };
 
-  handleButtonPress = async event => {
-    const { username, password } = this.state;
-
-    const response = await api.post("/sessions", { email: username, password });
-
-    localStorage.setItem("token", response.data.token);
-  };
-
-  // movimento 200qi
   handleInputChange = event => {
     this.setState({
       ...this.state,
@@ -27,8 +18,14 @@ export default class Login extends Component {
     });
   };
 
+  handleButtonPress = async event => {
+    const response = await api.post("/sessions", this.state);
+
+    localStorage.setItem("token", response.data.token);
+  };
+
   render() {
-    const { username, password } = this.state;
+    const { email, password } = this.state;
 
     return (
       <Container>
@@ -37,8 +34,8 @@ export default class Login extends Component {
           <span>E-mail</span>
           <input
             type="text"
-            name="username"
-            value={username}
+            name="email"
+            value={email}
             onChange={this.handleInputChange}
           ></input>
           <span>Senha</span>
