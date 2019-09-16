@@ -32,7 +32,8 @@ export default class Announce extends Component {
           <strong>Publicar Anuncio</strong>
           <div>
             <ImageContainer>
-              <MdImage size={60} color="#333" />
+              <img src={this.state.file} alt="produto" />
+              {/* <MdImage size={60} color="#333" /> */}
               <input name="file" type="file" onChange={this.handleFileSelect} />
             </ImageContainer>
             <div>
