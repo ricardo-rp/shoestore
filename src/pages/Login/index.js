@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import withRouter from "react-router";
 
 import api from "../../services/api";
 
 import { Container } from "./styles";
 
-export default class Login extends Component {
+class Login extends Component {
   state = {
     email: "",
     password: ""
@@ -19,7 +20,16 @@ export default class Login extends Component {
   };
 
   handleButtonPress = async event => {
+    let { history } = this.props;
+
     const response = await api.post("/sessions", this.state);
+
+    if (response.status === 200) {
+      alert("Logado!");
+      history.push("/");
+    } else {
+      alert("Erro. Tente novamente.");
+    }
 
     localStorage.setItem("token", response.data.token);
   };
@@ -54,3 +64,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default withRouter(Login);
