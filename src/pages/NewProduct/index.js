@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router";
 
 import { Container } from "./styles";
 
 import api from "../../services/api";
-export default class Announce extends Component {
+class Announce extends Component {
   // O proprio backend deve verificar qual usuario publicou o anuncio via token
   state = {
     title: "",
-    desc: "",
-    file: "",
+    description: "",
+    image: "",
     price: 0
   };
 
@@ -19,12 +20,21 @@ export default class Announce extends Component {
     });
   };
 
-  handleButtonPress = event => {
-    api.post("/products", this.state);
+  handleButtonPress = async event => {
+    let { history } = this.props;
+
+    const response = await api.post("/products", this.state);
+
+    if (response.status === 200) {
+      alert("Anuncio publicado!");
+      history.push("/");
+    } else {
+      alert("Ta dando alguma coisa errado kk faz de novo");
+    }
   };
 
   render() {
-    const { title, desc, file, price } = this.state;
+    const { title, image, description, price } = this.state;
     return (
       <Container>
         <div>
@@ -38,16 +48,16 @@ export default class Announce extends Component {
           />
           <span>Descricao:</span>
           <textarea
-            name="desc"
-            value={desc}
+            name="description"
+            value={description}
             type="text"
             maxlength={210}
             onChange={this.handleInputChange}
           />
           <span>Url da imagem:</span>
           <input
-            name="file"
-            value={file}
+            name="image"
+            value={image}
             type="text"
             onChange={this.handleInputChange}
           />
@@ -58,9 +68,13 @@ export default class Announce extends Component {
             type="number"
             onChange={this.handleInputChange}
           />
-          <button type="button">Publicar</button>
+          <button type="button" onClick={this.handleButtonPress}>
+            Publicar
+          </button>
         </div>
       </Container>
     );
   }
 }
+
+export default withRouter(Announce);
