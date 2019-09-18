@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import withRouter from "react-router";
+import { withRouter } from "react-router";
 
 import api from "../../services/api";
 
