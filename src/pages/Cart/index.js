@@ -13,8 +13,6 @@ import { Container, ProductTable, Total } from "./styles";
 
 import { formatPrice } from "../../util/format";
 
-import api from "../../services/api";
-
 function Cart({ cart, total, removeFromCart, updateAmount }) {
   function increment(product) {
     updateAmount(product.id, product.amount + 1);
@@ -25,9 +23,10 @@ function Cart({ cart, total, removeFromCart, updateAmount }) {
   }
 
   function handleButtonPress() {
-    api.post();
-
-    console.log(cart);
+    cart.map(product => {
+      return removeFromCart(product.id);
+    });
+    alert("Compra finalizada! :)");
   }
 
   return (
