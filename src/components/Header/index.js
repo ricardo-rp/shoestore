@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import {
   MdShoppingBasket,
   MdPersonOutline,
+  MdPerson,
   MdAttachMoney
 } from "react-icons/md";
 
@@ -25,6 +26,17 @@ function Header({ cartSize }) {
           </div>
           <MdAttachMoney size={36} color="#fff" />
         </Sell>
+        {console.log(
+          "TCL: Header -> localStorage.getItem('token')",
+          localStorage.getItem("token")
+        )}
+        <User onClick={() => localStorage.removeItem("token")}>
+          <div>
+            <strong>Logout</strong>
+            <span></span>
+          </div>
+          <MdPerson size={36} color="#fff" />
+        </User>
         <User to="/login">
           <div>
             <strong>Login</strong>

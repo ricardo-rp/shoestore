@@ -10,8 +10,14 @@ export default class SignUp extends Component {
     password: ""
   };
 
-  handleButtonPress = event => {
-    api.post("/users", this.state);
+  handleButtonPress = async event => {
+    const response = await api.post("/users", this.state);
+
+    if (response.status === 200) {
+      alert("success");
+    } else {
+      alert("failed");
+    }
   };
 
   handleInputChange = event => {
