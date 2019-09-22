@@ -5,7 +5,7 @@ import api from "../../services/api";
 
 export default class SignUp extends Component {
   state = {
-    name: "1",
+    name: "1", // Foi necessario para nao alterar a rota do backend
     email: "",
     password: ""
   };

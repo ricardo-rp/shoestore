@@ -96,7 +96,7 @@ function Cart({ cart, total, removeFromCart, updateAmount }) {
   );
 }
 
-// So roda se alguma informacao do REDUCER for atualizada
+// So roda se alguma informacao do state do redux for atualizada
 // Nao ira rodar em todo render()
 const mapStateToProps = state => ({
   cart: state.cart.map(product => ({

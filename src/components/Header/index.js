@@ -26,10 +26,7 @@ function Header({ cartSize }) {
           </div>
           <MdAttachMoney size={36} color="#fff" />
         </Sell>
-        {console.log(
-          "TCL: Header -> localStorage.getItem('token')",
-          localStorage.getItem("token")
-        )}
+        {/* Tivemos problemas fazendo o Header atualizar de acordo com o localStorage */}
         <User onClick={() => localStorage.removeItem("token")}>
           <div>
             <strong>Logout</strong>
@@ -56,6 +53,10 @@ function Header({ cartSize }) {
   );
 }
 
-export default connect(state => ({
+// Funcao que sera passada ao connect para colocar informacoes do estado global no props do componente
+const mapStateToProps = state => ({
   cartSize: state.cart.length
-}))(Header);
+});
+
+// O metodo Connect retorna o componente Header conectado com as informacoes que desejamos do estado do redux
+export default connect(mapStateToProps)(Header);

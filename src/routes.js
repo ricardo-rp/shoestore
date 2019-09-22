@@ -19,6 +19,7 @@ export default function Routes() {
   );
 }
 
+// Se existe o token, renderiza o componente recebido por props. Senao, redireciona para login
 const ProtectRoute = ({ component: Component, roles, ...rest }) => (
   <Route
     {...rest}

@@ -19,7 +19,7 @@ class Home extends Component {
     const response = await api.get("products");
 
     // Nao chamamos formatPrice() no render(), para nao roda-lo sempre que renderizar o componente.
-    // Da para fazer, pois o preco do item nao mudara ao vivo
+    // Melhor chamar ele aqui, ja que o preco do item nao precisa mudar em realtime
     const data = response.data.map(product => ({
       ...product,
       priceFormatted: formatPrice(product.price)
@@ -72,10 +72,10 @@ const mapStateToProps = state => ({
   }, {})
 });
 
+// Esta funcao retorna as acoes a serem inseridas em props pelo connect()
 const mapDispatchToProps = dispatch =>
   bindActionCreators(CartActions, dispatch);
 
-// Esse null seria o mapStateToProps()
 export default connect(
   mapStateToProps,
   mapDispatchToProps
